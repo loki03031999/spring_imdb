@@ -23,4 +23,30 @@ public class GenreEntity {
 	
 	@ManyToMany(mappedBy = "genreSet")
 	public Set<TitleEntity> titleSet;
+
+	public int getGenreId() {
+		return genreId;
+	}
+
+	public void setGenreId(int genreId) {
+		this.genreId = genreId;
+	}
+
+	public String getGenreName() {
+		return genreName;
+	}
+
+	public void setGenreName(String genreName) {
+		this.genreName = genreName;
+	}
+
+	public Set<TitleEntity> getTitleSet() {
+		return titleSet;
+	}
+
+	public void setTitleSet(Set<TitleEntity> titleSet) {
+		this.titleSet = titleSet;
+	}
+	
+	
 }

@@ -16,7 +16,25 @@ public class MovieAndEpisode_PersonKey implements Serializable{
 	@Column(name = "movieandepisode_id")
 	int movieAndEpisodeId;
 	
-	@Column(name = "movieandepisode_id")
+	@Column(name = "person_id")
 	int personId;
+
+	public int getMovieAndEpisodeId() {
+		return movieAndEpisodeId;
+	}
+
+	public void setMovieAndEpisodeId(int movieAndEpisodeId) {
+		this.movieAndEpisodeId = movieAndEpisodeId;
+	}
+
+	public int getPersonId() {
+		return personId;
+	}
+
+	public void setPersonId(int personId) {
+		this.personId = personId;
+	}
+	
+	
 
 }
