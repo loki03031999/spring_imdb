@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.spring.imdb.business.bean.GenreBean;
@@ -14,17 +15,19 @@ import com.spring.imdb.entity.GenreEntity;
 import com.spring.imdb.service.GenreService;
 
 @RestController
+@RequestMapping(path = "/genre")
 public class GenreController {
 	
 	@Autowired
 	GenreService genreService;
 	
-	@GetMapping(path="/genre/id/{genreId}")
-	public ResponseEntity<GenreEntity> getGenreById(@PathVariable("genreId") int genreId) {
-		return new ResponseEntity<GenreEntity>( genreService.getGenre(genreId),HttpStatus.OK);
+	@GetMapping(path="/id/{genreId}")
+	public ResponseEntity<GenreBean> getGenreById(@PathVariable("genreId") int genreId) {
+		GenreBean genreBean = genreService.getGenre(genreId);
+		return new ResponseEntity<GenreBean>(genreBean,HttpStatus.OK);
 	}
 	
-	@PostMapping(path="/genre/save")
+	@PostMapping(path="/save")
 	public ResponseEntity<GenreBean> saveGenre(@RequestBody GenreBean genreBean){
 		genreService.saveGenre(genreBean);
 		return new ResponseEntity<GenreBean>(genreBean,HttpStatus.OK);

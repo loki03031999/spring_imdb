@@ -1,5 +1,6 @@
 package com.spring.imdb.service;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,8 +25,10 @@ public class GenreService {
 		genreEntity = null;
 	}
 	
-	public GenreEntity getGenre(int id) {
-		return genreDAO.getGenreEntityById(id);
+	public GenreBean getGenre(int id) {
+		GenreBean genreBean = new GenreBean();
+		BeanUtils.copyProperties(genreDAO.getGenreEntityById(id),genreBean);
+		return genreBean;
 	}
 	
 }

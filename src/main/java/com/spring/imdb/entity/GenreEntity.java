@@ -48,5 +48,8 @@ public class GenreEntity {
 		this.titleSet = titleSet;
 	}
 	
+	public String toString() {
+		return genreId + genreName;
+	}
 	
 }
