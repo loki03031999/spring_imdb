@@ -11,14 +11,16 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
-@Entity(name = "movieandepisode")
+@Entity
+@Table(name="movieandepisode")
 public class MovieAndEpisodeEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "movieandepisode_id")
-	public int movieandepisodeId;
+	public int movieAndEpisodeId;
 	
 	@ManyToOne
 	@JoinColumn(name="title_id")
@@ -37,8 +39,10 @@ public class MovieAndEpisodeEntity {
 	
 	@Column(name="movieorseries")
 	public String movieOrSeries;
+	
 	@Column(name="episode_number")
 	public int episodeNumber;
+	
 	@Column(name="season_number")
 	public int seasonNumber;
 	
@@ -46,11 +50,11 @@ public class MovieAndEpisodeEntity {
 	public Set<PersonEntity> personSet;
 
 	public int getMovieandepisodeId() {
-		return movieandepisodeId;
+		return movieAndEpisodeId;
 	}
 
 	public void setMovieandepisodeId(int movieandepisodeId) {
-		this.movieandepisodeId = movieandepisodeId;
+		this.movieAndEpisodeId = movieandepisodeId;
 	}
 
 	public TitleEntity getTitleEntity() {
@@ -132,7 +136,13 @@ public class MovieAndEpisodeEntity {
 	public void setPersonSet(Set<PersonEntity> personSet) {
 		this.personSet = personSet;
 	}
-	
-	
-	
+
+	@Override
+	public String toString() {
+		return "MovieAndEpisodeEntity [movieandepisodeId=" + movieAndEpisodeId + ", titleEntity=" + titleEntity
+				+ ", name=" + name + ", description=" + description + ", dateOfRelease=" + dateOfRelease + ", language="
+				+ language + ", timeMinutes=" + timeMinutes + ", movieOrSeries=" + movieOrSeries + ", episodeNumber="
+				+ episodeNumber + ", seasonNumber=" + seasonNumber + ", personSet=" + personSet + "]";
+	}
+		
 }

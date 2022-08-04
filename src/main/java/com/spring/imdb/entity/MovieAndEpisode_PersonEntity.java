@@ -6,8 +6,10 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
+import javax.persistence.Table;
 
-@Entity(name="movieandepisode_person")
+@Entity
+@Table(name="movieandepisode_person")
 public class MovieAndEpisode_PersonEntity {
 
 	@EmbeddedId

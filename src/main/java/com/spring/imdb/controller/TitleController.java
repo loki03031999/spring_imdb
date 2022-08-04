@@ -1,8 +1,11 @@
 package com.spring.imdb.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,17 +32,24 @@ public class TitleController {
 		return new ResponseEntity<TitleBean>(titleBean,HttpStatus.OK);
 	}
 	
+	@GetMapping(path = "/list")
+	public ResponseEntity<List<TitleBean>> getTitleList(){
+		//return new ResponseBody<TitleBean>();
+		List<TitleBean> titleBeanList = titleService.getTitleBeanList();
+		return new ResponseEntity<List<TitleBean>>(titleBeanList,HttpStatus.OK);
+	}
+	
 	/*
 	 Saving New Title in Database
 	 Parameters passed - 
-	 	titleName
-	 	listofGenres with genreId, genreName;
+	 titleName
+	 listofGenres with genreId, genreName;
 	 * */
 	@PostMapping(path = "/save")
 	public ResponseEntity<TitleBean> saveTitle(@RequestBody TitleBean titleBean){
 		//return new ResponseBody<TitleBean>();
-		int titleId = titleService.saveTitleBean(titleBean);
-		titleBean.setTitleId(titleId);
+		titleBean = titleService.saveTitleBean(titleBean);
+		//titleBean.setTitleId(titleId);
 		return new ResponseEntity<TitleBean>(titleBean,HttpStatus.OK);
 	}
 	
@@ -74,6 +84,13 @@ public class TitleController {
 		titleBean = titleService.updateTitleRemoveGenre(titleBean);
 		return new ResponseEntity<TitleBean>(titleBean,HttpStatus.OK);
 	}
+	
+	@DeleteMapping(path="/delete")
+	public ResponseEntity<String> removeTitle(@RequestParam("id") int titleId){
+		String a = titleService.removeTitle(titleId);
+		return new ResponseEntity<String>(a,HttpStatus.OK);
+	}
+	
 	
 	/*
 	 Cases - 

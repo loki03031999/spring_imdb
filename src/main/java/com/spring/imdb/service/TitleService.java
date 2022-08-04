@@ -1,6 +1,7 @@
 package com.spring.imdb.service;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.BeanUtils;
@@ -28,19 +29,19 @@ public class TitleService {
 		return titleBean;
 	}
 	
-	public TitleEntity getTitleEntityById(int id) {
-		TitleBean titleBean = new TitleBean();
-		TitleEntity titleEntity = titleDAO.getTitleEntity(id);
-		return titleEntity;
+	public List<TitleBean> getTitleBeanList(){
+		List<TitleBean> titleBeanList = titleDAO.getTitleBeanList();
+		return titleBeanList;
 	}
 	
-	public int saveTitleBean(TitleBean titleBean) {
+	public TitleBean saveTitleBean(TitleBean titleBean) {
 		TitleEntity titleEntity = new TitleEntity();
 		System.out.println(titleBean);
 		//BeanUtils.copyProperties(titleBean, titleEntity);
 		titleEntity = convertBeanToEntity(titleBean);
 		titleDAO.saveTitleEntity(titleEntity);
-		return titleEntity.getTitleId();
+		titleBean = convertEntityToBean(titleEntity);
+		return titleBean;
 	}
 	
 	public int updateTitleBean(TitleBean titleBean) {
@@ -70,6 +71,11 @@ public class TitleService {
 	}
 	
 	
+	public String removeTitle(int titleId) {
+		return titleDAO.removeTitleEntity(titleId);
+	}
+	
+	
 	public static TitleBean convertEntityToBean(TitleEntity titleEntity) {
 		TitleBean titleBean = new TitleBean();
 		
@@ -96,7 +102,7 @@ public class TitleService {
 		titleEntity.setTitleName(titleBean.getTitleName());
 		titleEntity.setTitleId(titleBean.getTitleId());
 		Set<GenreBean> genreBeanGenreSet = titleBean.getGenreSet();
-		Set<GenreEntity> genreEntityGenreSet = new HashSet(); 
+		Set<GenreEntity> genreEntityGenreSet = new HashSet<GenreEntity>(); 
 		
 		if(genreBeanGenreSet!=null) {
 			for(GenreBean genreBean:genreBeanGenreSet) {

@@ -9,8 +9,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
-@Entity(name="Person")
+@Entity
+@Table(name="Person")
 public class PersonEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -89,7 +91,15 @@ public class PersonEntity {
 
 	public void setMovieAndEpisodeEntitySet(Set<MovieAndEpisodeEntity> movieAndEpisodeEntitySet) {
 		this.movieAndEpisodeEntitySet = movieAndEpisodeEntitySet;
+	}
+
+	@Override
+	public String toString() {
+		return "PersonEntity [personId=" + personId + ", firstName=" + firstName + ", lastName=" + lastName
+				+ ", dateOfBirth=" + dateOfBirth + ", dateOfDeath=" + dateOfDeath + ", country=" + country
+				+ ", movieAndEpisodeEntitySet=" + movieAndEpisodeEntitySet + "]";
 	} 
+	
 	
 	
 }

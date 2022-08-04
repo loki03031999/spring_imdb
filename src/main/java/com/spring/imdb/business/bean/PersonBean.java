@@ -2,13 +2,14 @@ package com.spring.imdb.business.bean;
 
 import java.util.Date;
 
-public class Person {
+public class PersonBean {
 	public int personId;
 	public String firstName;
 	public String lastName;
-	public String Country;
+	public String country;
 	public Date dateOfBirth;
 	public Date dateOfDeath;
+	
 	public int getPersonId() {
 		return personId;
 	}
@@ -28,10 +29,10 @@ public class Person {
 		this.lastName = lastName;
 	}
 	public String getCountry() {
-		return Country;
+		return country;
 	}
 	public void setCountry(String country) {
-		Country = country;
+		this.country = country;
 	}
 	public Date getDateOfBirth() {
 		return dateOfBirth;
@@ -44,6 +45,11 @@ public class Person {
 	}
 	public void setDateOfDeath(Date dateOfDeath) {
 		this.dateOfDeath = dateOfDeath;
+	}
+	@Override
+	public String toString() {
+		return "PersonBean [personId=" + personId + ", firstName=" + firstName + ", lastName=" + lastName + ", country="
+				+ country + ", dateOfBirth=" + dateOfBirth + ", dateOfDeath=" + dateOfDeath + "]";
 	}
 	
 }

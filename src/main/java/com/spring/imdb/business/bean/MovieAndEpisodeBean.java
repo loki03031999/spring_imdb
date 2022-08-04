@@ -2,28 +2,28 @@ package com.spring.imdb.business.bean;
 
 import java.util.Date;
 
-public class MovieAndEpisode {
-	public int movieEpisodeId;
-	public TitleBean titleId;
+public class MovieAndEpisodeBean {
+	public int movieAndEpisodeId;
+	public int titleId;
 	public String name;
 	public String description;
 	public Date dateOfRelease;
-	public String languages;
+	public String language;
 	public int timeMinutes;
 	public String movieOrSeries;
 	public int episodeNumber;
 	public int seasonNumber;
 	
 	public int getMovieEpisodeId() {
-		return movieEpisodeId;
+		return movieAndEpisodeId;
 	}
 	public void setMovieEpisodeId(int movieEpisodeId) {
-		this.movieEpisodeId = movieEpisodeId;
+		this.movieAndEpisodeId = movieEpisodeId;
 	}
-	public TitleBean getTitleId() {
+	public int getTitleId() {
 		return titleId;
 	}
-	public void setTitleId(TitleBean titleId) {
+	public void setTitleId(int titleId) {
 		this.titleId = titleId;
 	}
 	public String getName() {
@@ -45,10 +45,10 @@ public class MovieAndEpisode {
 		this.dateOfRelease = dateOfRelease;
 	}
 	public String getLanguages() {
-		return languages;
+		return language;
 	}
 	public void setLanguages(String languages) {
-		this.languages = languages;
+		this.language = languages;
 	}
 	public int getTimeMinutes() {
 		return timeMinutes;
@@ -74,6 +74,14 @@ public class MovieAndEpisode {
 	public void setSeasonNumber(int seasonNumber) {
 		this.seasonNumber = seasonNumber;
 	}
+	@Override
+	public String toString() {
+		return "MovieAndEpisodeBean [movieEpisodeId=" + movieAndEpisodeId + ", titleId=" + titleId + ", name=" + name
+				+ ", description=" + description + ", dateOfRelease=" + dateOfRelease + ", language=" + language
+				+ ", timeMinutes=" + timeMinutes + ", movieOrSeries=" + movieOrSeries + ", episodeNumber="
+				+ episodeNumber + ", seasonNumber=" + seasonNumber + "]";
+	}
+	
 	
 	
 }
