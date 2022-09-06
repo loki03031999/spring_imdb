@@ -95,4 +95,10 @@ public class PersonDAO {
 		return personEntityList;
 	}
 	
+	public static PersonBean convertPersonEntityToPersonBean(PersonEntity personEntity) {
+		PersonBean personBean = new PersonBean();
+		BeanUtils.copyProperties(personEntity, personBean);
+		return personBean;
+	}
+	
 }

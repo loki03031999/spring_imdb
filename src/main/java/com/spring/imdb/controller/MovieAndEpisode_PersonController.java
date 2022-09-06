@@ -2,6 +2,7 @@ package com.spring.imdb.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +20,11 @@ public class MovieAndEpisode_PersonController {
 	@PostMapping(path = "/save")
 	public void saveMovieAndEpisode_Person(@RequestBody MovieAndEpisode_PersonBean movieAndEpisode_PersonBean) {
 		movieAndEpisode_PersonService.saveMovieAndEpisode_PersonBean(movieAndEpisode_PersonBean);
+	}
+	
+	@DeleteMapping(path="/delete")
+	public void deleteMovieAndEpisode_Person(@RequestBody MovieAndEpisode_PersonBean movieAndEpisode_PersonBean) {
+		movieAndEpisode_PersonService.deleteMovieAndEpisode_PersonEntity(movieAndEpisode_PersonBean);
 	}
 	
 }

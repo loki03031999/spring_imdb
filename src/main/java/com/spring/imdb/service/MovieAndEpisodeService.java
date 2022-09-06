@@ -25,4 +25,15 @@ public class MovieAndEpisodeService {
 		return a;
 	}
 	
+	public int deleteMovieAndEpisode(int id) {
+		try {
+			movieAndEpisodeDAO.deleteMovieAndEpisode(id);
+		}
+		catch(Exception ex) {
+			System.out.println(ex.getStackTrace());
+			return 0;
+		}
+		return id;
+	}
+	
 }

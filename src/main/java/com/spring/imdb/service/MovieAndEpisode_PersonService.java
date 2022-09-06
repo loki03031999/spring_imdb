@@ -19,4 +19,8 @@ public class MovieAndEpisode_PersonService {
 		movieAndEpisode_PersonDAO.saveMovieAndEpisode_PersonEntity(movieAndEpisode_PersonBean);
 	}
 	
+	public void deleteMovieAndEpisode_PersonEntity(MovieAndEpisode_PersonBean movieAndEpisode_PersonBean) {
+		movieAndEpisode_PersonDAO.deleteMovieAndEpisode_PersonEntity(movieAndEpisode_PersonBean);
+	}
+	
 }
