@@ -2,15 +2,14 @@ package com.spring.imdb.entity;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.Set;
 
-@Entity
-@Table(name = "Person")
-public class PersonEntity {
+//@Entity
+//@Table(name = "Person")
+public class Person {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.TABLE)
     @Column(name = "person_id")
-    public int personId;
+    public int id;
 
     @Column(name = "first_name")
     public String firstName;
@@ -29,10 +28,9 @@ public class PersonEntity {
 
     @Override
     public String toString() {
-        return "PersonEntity [personId=" + personId + ", firstName=" + firstName + ", lastName=" + lastName
+        return "PersonEntity [personId=" + id + ", firstName=" + firstName + ", lastName=" + lastName
                 + ", dateOfBirth=" + dateOfBirth + ", dateOfDeath=" + dateOfDeath + ", country=" + country
                 + "]";
     }
-
 
 }

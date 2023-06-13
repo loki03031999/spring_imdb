@@ -16,7 +16,7 @@ public class Content {
     private String titleName;
     private String description;
     private DbConstants.ContentType contentType;
-    private Title title;
+    //private Title title;
     private Integer seasonNo;
     private Integer episodeNo;
 }

@@ -1,10 +1,8 @@
 package com.spring.imdb.entity;
 
-import com.spring.imdb.constants.DbConstants;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 @Table(name = "title")
@@ -19,7 +17,7 @@ public class Title {
     public String titleName;
 
     @Column(name = "genre")
-    public Set<DbConstants.Genre> genre;
+    public String genre;
 
     private String language;
     private String originCountry;
