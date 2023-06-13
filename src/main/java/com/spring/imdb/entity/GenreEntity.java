@@ -1,55 +1,27 @@
 package com.spring.imdb.entity;
 
+import lombok.Data;
+
+import javax.persistence.*;
 import java.util.Set;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
-
 @Entity
-@Table(name="Genre")
+@Table(name = "Genre")
+@Data
 public class GenreEntity {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="genre_id")
-	public int genreId;
-	
-	@Column(name="genre_name")
-	public String genreName;
-	
-	@ManyToMany(mappedBy = "genreSet")
-	public Set<TitleEntity> titleSet;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "genre_id")
+    public int genreId;
 
-	public int getGenreId() {
-		return genreId;
-	}
+    @Column(name = "genre_name")
+    public String genreName;
 
-	public void setGenreId(int genreId) {
-		this.genreId = genreId;
-	}
+    @ManyToMany(mappedBy = "genreSet")
+    public Set<TitleEntity> titleSet;
 
-	public String getGenreName() {
-		return genreName;
-	}
+    public String toString() {
+        return genreId + genreName;
+    }
 
-	public void setGenreName(String genreName) {
-		this.genreName = genreName;
-	}
-
-	public Set<TitleEntity> getTitleSet() {
-		return titleSet;
-	}
-
-	public void setTitleSet(Set<TitleEntity> titleSet) {
-		this.titleSet = titleSet;
-	}
-	
-	public String toString() {
-		return genreId + genreName;
-	}
-	
 }

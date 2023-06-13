@@ -1,58 +1,24 @@
 package com.spring.imdb.entity;
 
-import java.util.Set;
+import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "title")
+@Data
 public class TitleEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.TABLE)
+    @Column(name = "title_id")
+    public int titleId;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="title_id")
-	public int titleId;
-	
-	@Column(name="title")
-	public String titleName;
-	
-	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name="title_genre", joinColumns = @JoinColumn(name = "title_id"),inverseJoinColumns = @JoinColumn(name="genre_id"))
-	public Set<GenreEntity> genreSet;
+    @Column(name = "title")
+    public String titleName;
 
-	public int getTitleId() {
-		return titleId;
-	}
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "title_genre", joinColumns = @JoinColumn(name = "title_id"), inverseJoinColumns = @JoinColumn(name = "genre_id"))
+    public Set<GenreEntity> genreSet;
 
-	public void setTitleId(int titleId) {
-		this.titleId = titleId;
-	}
-
-	public String getTitleName() {
-		return titleName;
-	}
-
-	public void setTitleName(String titleName) {
-		this.titleName = titleName;
-	}
-
-	public Set<GenreEntity> getGenreSet() {
-		return genreSet;
-	}
-
-	public void setGenreSet(Set<GenreEntity> genreSet) {
-		this.genreSet = genreSet;
-	}
-	
-	
-	
 }

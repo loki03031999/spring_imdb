@@ -1,148 +1,139 @@
 package com.spring.imdb.entity;
 
+import javax.persistence.*;
 import java.util.Date;
 import java.util.Set;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
 @Entity
-@Table(name="movieandepisode")
+@Table(name = "movieandepisode")
 public class MovieAndEpisodeEntity {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "movieandepisode_id")
-	public int movieAndEpisodeId;
-	
-	@ManyToOne
-	@JoinColumn(name="title_id")
-	public TitleEntity titleEntity;
-	
-	public String name;
-	public String description;
-	
-	@Column(name="date_of_release",columnDefinition = "DATE")
-	public Date dateOfRelease;
-	
-	public String language;
-	
-	@Column(name="time_minutes")
-	public int timeMinutes;
-	
-	@Column(name="movieorseries")
-	public String movieOrSeries;
-	
-	@Column(name="episode_number")
-	public int episodeNumber;
-	
-	@Column(name="season_number")
-	public int seasonNumber;
-	
-	@OneToMany(mappedBy = "person",targetEntity = MovieAndEpisode_PersonEntity.class)
-	public Set<PersonEntity> personSet;
 
-	public int getMovieandepisodeId() {
-		return movieAndEpisodeId;
-	}
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "movieandepisode_id")
+    public int movieAndEpisodeId;
 
-	public void setMovieandepisodeId(int movieandepisodeId) {
-		this.movieAndEpisodeId = movieandepisodeId;
-	}
+    @ManyToOne
+    @JoinColumn(name = "title_id")
+    public TitleEntity titleEntity;
 
-	public TitleEntity getTitleEntity() {
-		return titleEntity;
-	}
+    public String name;
+    public String description;
 
-	public void setTitleEntity(TitleEntity titleEntity) {
-		this.titleEntity = titleEntity;
-	}
+    @Column(name = "date_of_release", columnDefinition = "DATE")
+    public Date dateOfRelease;
 
-	public String getName() {
-		return name;
-	}
+    public String language;
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    @Column(name = "time_minutes")
+    public int timeMinutes;
 
-	public String getDescription() {
-		return description;
-	}
+    @Column(name = "movieorseries")
+    public String movieOrSeries;
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    @Column(name = "episode_number")
+    public int episodeNumber;
 
-	public Date getDateOfRelease() {
-		return dateOfRelease;
-	}
+    @Column(name = "season_number")
+    public int seasonNumber;
 
-	public void setDateOfRelease(Date dateOfRelease) {
-		this.dateOfRelease = dateOfRelease;
-	}
+    @OneToMany(mappedBy = "person", targetEntity = MovieAndEpisode_PersonEntity.class)
+    public Set<PersonEntity> personSet;
 
-	public String getLanguage() {
-		return language;
-	}
+    public int getMovieandepisodeId() {
+        return movieAndEpisodeId;
+    }
 
-	public void setLanguage(String language) {
-		this.language = language;
-	}
+    public void setMovieandepisodeId(int movieandepisodeId) {
+        this.movieAndEpisodeId = movieandepisodeId;
+    }
 
-	public int getTimeMinutes() {
-		return timeMinutes;
-	}
+    public TitleEntity getTitleEntity() {
+        return titleEntity;
+    }
 
-	public void setTimeMinutes(int timeMinutes) {
-		this.timeMinutes = timeMinutes;
-	}
+    public void setTitleEntity(TitleEntity titleEntity) {
+        this.titleEntity = titleEntity;
+    }
 
-	public String getMovieOrSeries() {
-		return movieOrSeries;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setMovieOrSeries(String movieOrSeries) {
-		this.movieOrSeries = movieOrSeries;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public int getEpisodeNumber() {
-		return episodeNumber;
-	}
+    public String getDescription() {
+        return description;
+    }
 
-	public void setEpisodeNumber(int episodeNumber) {
-		this.episodeNumber = episodeNumber;
-	}
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-	public int getSeasonNumber() {
-		return seasonNumber;
-	}
+    public Date getDateOfRelease() {
+        return dateOfRelease;
+    }
 
-	public void setSeasonNumber(int seasonNumber) {
-		this.seasonNumber = seasonNumber;
-	}
+    public void setDateOfRelease(Date dateOfRelease) {
+        this.dateOfRelease = dateOfRelease;
+    }
 
-	public Set<PersonEntity> getPersonSet() {
-		return personSet;
-	}
+    public String getLanguage() {
+        return language;
+    }
 
-	public void setPersonSet(Set<PersonEntity> personSet) {
-		this.personSet = personSet;
-	}
+    public void setLanguage(String language) {
+        this.language = language;
+    }
 
-	@Override
-	public String toString() {
-		return "MovieAndEpisodeEntity [movieandepisodeId=" + movieAndEpisodeId + ", titleEntity=" + titleEntity
-				+ ", name=" + name + ", description=" + description + ", dateOfRelease=" + dateOfRelease + ", language="
-				+ language + ", timeMinutes=" + timeMinutes + ", movieOrSeries=" + movieOrSeries + ", episodeNumber="
-				+ episodeNumber + ", seasonNumber=" + seasonNumber + ", personSet=" + personSet + "]";
-	}
-		
+    public int getTimeMinutes() {
+        return timeMinutes;
+    }
+
+    public void setTimeMinutes(int timeMinutes) {
+        this.timeMinutes = timeMinutes;
+    }
+
+    public String getMovieOrSeries() {
+        return movieOrSeries;
+    }
+
+    public void setMovieOrSeries(String movieOrSeries) {
+        this.movieOrSeries = movieOrSeries;
+    }
+
+    public int getEpisodeNumber() {
+        return episodeNumber;
+    }
+
+    public void setEpisodeNumber(int episodeNumber) {
+        this.episodeNumber = episodeNumber;
+    }
+
+    public int getSeasonNumber() {
+        return seasonNumber;
+    }
+
+    public void setSeasonNumber(int seasonNumber) {
+        this.seasonNumber = seasonNumber;
+    }
+
+    public Set<PersonEntity> getPersonSet() {
+        return personSet;
+    }
+
+    public void setPersonSet(Set<PersonEntity> personSet) {
+        this.personSet = personSet;
+    }
+
+    @Override
+    public String toString() {
+        return "MovieAndEpisodeEntity [movieandepisodeId=" + movieAndEpisodeId + ", titleEntity=" + titleEntity
+                + ", name=" + name + ", description=" + description + ", dateOfRelease=" + dateOfRelease + ", language="
+                + language + ", timeMinutes=" + timeMinutes + ", movieOrSeries=" + movieOrSeries + ", episodeNumber="
+                + episodeNumber + ", seasonNumber=" + seasonNumber + ", personSet=" + personSet + "]";
+    }
+
 }
