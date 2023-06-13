@@ -1,5 +1,6 @@
 package com.spring.imdb.entity;
 
+import com.spring.imdb.constants.DbConstants;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -8,17 +9,20 @@ import java.util.Set;
 @Entity
 @Table(name = "title")
 @Data
-public class TitleEntity {
+public class Title {
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
     @Column(name = "title_id")
-    public int titleId;
+    public int id;
 
     @Column(name = "title")
     public String titleName;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "title_genre", joinColumns = @JoinColumn(name = "title_id"), inverseJoinColumns = @JoinColumn(name = "genre_id"))
-    public Set<GenreEntity> genreSet;
+    @Column(name = "genre")
+    public Set<DbConstants.Genre> genre;
+
+    private String language;
+    private String originCountry;
+    private String releaseCountry;
 
 }
