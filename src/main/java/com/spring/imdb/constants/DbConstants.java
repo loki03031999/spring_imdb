@@ -8,4 +8,8 @@ public class DbConstants {
     public enum ContentType {
         MOVIE, SERIES
     }
+
+    public enum UserStatus {
+        ACTIVE, INACTIVE
+    }
 }

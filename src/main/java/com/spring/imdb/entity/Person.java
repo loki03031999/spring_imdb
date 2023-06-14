@@ -1,36 +1,43 @@
 package com.spring.imdb.entity;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.util.Date;
 
-//@Entity
-//@Table(name = "Person")
+@Entity
+@Table(name = "person")
+@Data
 public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
-    @Column(name = "person_id")
-    public int id;
+    private int id;
 
     @Column(name = "first_name")
-    public String firstName;
+    private String firstName;
 
     @Column(name = "last_name")
-    public String lastName;
+    private String lastName;
 
-    @Column(name = "date_of_birth", columnDefinition = "DATE")
-    public Date dateOfBirth;
+    @Column(name = "date_of_birth")
+    @Temporal(TemporalType.DATE)
+    private Date dateOfBirth;
 
-    @Column(name = "date_of_death", columnDefinition = "DATE")
-    public Date dateOfDeath;
+    @Column(name = "date_of_death")
+    @Temporal(TemporalType.DATE)
+    private Date dateOfDeath;
 
-    @Column(name = "country")
-    public String country;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date created;
+
+    @Column(name = "last_modified")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date lastModified;
 
     @Override
     public String toString() {
         return "PersonEntity [personId=" + id + ", firstName=" + firstName + ", lastName=" + lastName
-                + ", dateOfBirth=" + dateOfBirth + ", dateOfDeath=" + dateOfDeath + ", country=" + country
-                + "]";
+                + ", dateOfBirth=" + dateOfBirth + ", dateOfDeath=" + dateOfDeath + "]";
     }
 
 }
