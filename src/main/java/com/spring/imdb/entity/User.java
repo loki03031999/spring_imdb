@@ -1,35 +1,29 @@
 package com.spring.imdb.entity;
 
-import com.spring.imdb.constants.DbConstants;
 import lombok.Data;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
 
 import javax.persistence.*;
-import java.util.Date;
 
+@Data
 @Entity
 @Table(name = "user")
-@Data
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
-    @Column(name = "first_name")
-    private String firstName;
-
-    @Column(name = "last_name")
-    private String lastName;
-
-    @Column(name = "secret")
-    private String secret;
-
-    @Enumerated(EnumType.STRING)
-    private DbConstants.UserStatus status;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date created;
-
-    @Column(name = "last_modified")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date lastModified;
+    @Column(name = "user_id")
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "user_unique_id_generator")
+    @TableGenerator(
+            name = "user_unique_id_generator",
+            table = "id_generator",
+            pkColumnName = "object_name",
+            valueColumnName = "last_id",
+            pkColumnValue = "user",
+            allocationSize = 5
+    )
+    private Long userId;
+    @Column(name = "secure_user_id")
+    private String secureUserId;
+    private String name;
+    private String password;
 }
